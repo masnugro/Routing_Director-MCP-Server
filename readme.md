@@ -9,16 +9,11 @@ Step-by-step guide:
 better to run this in virtual environment.
 I'm running this in .venv in Macbook
 
-1/pip install -r requirements2.txt
+1/pip install -r requirements.txt
 2/pip install --upgrade pip
 3/uv pip install fastmcp
 4/fastmcp install claude-desktop rd_mcp2.py
 ```
-
-```
-<img width="451" height="755" alt="image" src="https://github.com/user-attachments/assets/9ed812e1-fba7-44cb-b331-309d05457f28" />
-```
-
 
 ```
 The available tool list :
