@@ -2,9 +2,18 @@
 
 ```
 The available tool list :
-1/
-2/
-3/
+1/ get running active assurance
+2/ get customers
+3/ get bgp status
+4/ get bgp peers number
+5/ get cluster health
+6/ acknowledge alarm
+7/ create new customer
+8/ get sites list
+9/ get device inventory
+10/ get organisation alarms
+11/ get alerts
+12/ get device series
 ```
 
 ## Sample Output
