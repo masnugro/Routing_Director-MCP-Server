@@ -13,10 +13,8 @@ I'm running this in .venv in Macbook
 2/pip install --upgrade pip
 3/uv pip install fastmcp
 4/fastmcp install claude-desktop rd_mcp2.py
-```
 
-```
-The available tool list :
+Available tools:
 1/ get running active assurance
 2/ get customers
 3/ get bgp status
