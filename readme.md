@@ -7,7 +7,7 @@ This tools could just do that and the response will be user-friendly and easily 
 ```
 Step-by-step guide:
 better to run this in virtual environment.
-I'm running this in .venv in Macbook
+I'm running this using Macbook in .venv
 
 1/pip install -r requirements.txt
 2/pip install --upgrade pip
@@ -45,6 +45,6 @@ Available tools:
 
 
 # Disclaimer
-```
+
 The available function tools (rd_mcp.py) is a living documentation, I will try to add the capabilities along the time.
-```
+
