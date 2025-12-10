@@ -5,7 +5,7 @@ This tools could just do that and the response will be user-friendly and easily 
 
 
 
-Step-by-step guide:
+## Step-by-step guide:
 better to run this in virtual environment.
 I'm running this using Macbook in .venv
 
@@ -15,24 +15,24 @@ I'm running this using Macbook in .venv
 4/fastmcp install claude-desktop rd_mcp2.py
 
 Available tools:
-1/ ```get``` running active assurance
-2/ ```get``` customers
-3/ ```get``` bgp status
-4/ ```get``` bgp peers number
-5/ ```get``` cluster health
-6/ ```acknowledge``` alarm
-7/ ```create``` new customer
-8/ ```get``` sites list
-9/ ```get``` device inventory
-10/ ```get``` organisation alarms
-11/ ```get``` alerts
-12/ ```get``` device series
-13/ ```get``` topology
-14/ ```get``` topology nodes
-15/ ```create``` TE LSP
-16/ ```get``` TE LSP in networks
-17/ ```delete``` TE LSP
-18/ ```get``` TE LSP history
+* ```get``` running active assurance
+* ```get``` customers
+* ```get``` bgp status
+* ```get``` bgp peers number
+* ```get``` cluster health
+* ```acknowledge``` alarm
+* ```create``` new customer
+* ```get``` sites list
+* ```get``` device inventory
+* ```get``` organisation alarms
+* ```get``` alerts
+* ```get``` device series
+* ```get``` topology
+* ```get``` topology nodes
+* ```create``` TE LSP
+* ```get``` TE LSP in networks
+* ```delete``` TE LSP
+* ```get``` TE LSP history
 
 
 ## Sample Output
