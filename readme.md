@@ -6,7 +6,7 @@ This tools could just do that and the response will be user-friendly and easily 
 
 
 ## Step-by-step guide:
-better to run this in virtual environment.
+Better to run this in virtual environment.
 I'm running this using Macbook in .venv
 
 - pip install -r [requirements.txt](https://github.com/masnugro/Routing_Director-MCP-Server/blob/main/requirements.txt)
@@ -14,7 +14,7 @@ I'm running this using Macbook in .venv
 - uv pip install fastmcp
 - fastmcp install claude-desktop rd_mcp2.py
 
-**Available tools:**
+**Available Tools:**
 * ```get``` running active assurance
 * ```get``` customers
 * ```get``` bgp status
