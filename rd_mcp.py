@@ -197,12 +197,7 @@ def get_active_assurance() -> dict:
 
 @mcp.tool()
 def ack_alerts(stream_ids: list[str], comment: str = "") -> dict:
-    """Acknowledge alarms in Routing Director
-
-    Args:
-        stream_ids: List of stream IDs to acknowledge
-        comment: Optional comment for the acknowledgment
-    """
+    """Acknowledge alarms in Routing Director"""
     try:
         headers = auth(rd_server, email, password, api_token)
         if not headers:
@@ -225,4 +220,245 @@ def ack_alerts(stream_ids: list[str], comment: str = "") -> dict:
         return {"error": f"HTTP {e.response.status_code}", "details": e.response.text}
     except Exception as e:
         print(f"An unexpected error occurred in ack_alerts: {e}", file=sys.stderr)
+        return {"error": str(e)}
+
+@mcp.tool()
+def get_topologies() -> dict:
+    """Get list of available topologies in the organization"""
+    try:
+        headers = auth(rd_server, email, password, api_token)
+        if not headers:
+            return {"error": "Authentication failed"}
+
+        url = f'https://{rd_server}/topology/api/v1/orgs/{org_id}/topologies'
+        response = httpx.get(url, headers=headers, verify=False, timeout=30.0)
+
+        if response.status_code == 200:
+            result = response.json()
+            if isinstance(result, list):
+                return {"topologies": result, "total": len(result)}
+            return result
+        else:
+            return {
+                "success": False,
+                "status_code": response.status_code,
+                "error": response.text
+            }
+
+    except Exception as e:
+        print(f"An unexpected error occurred in get_topologies: {e}", file=sys.stderr)
+        return {"error": str(e)}
+
+
+@mcp.tool()
+def get_topology_nodes(topology_id: str = "YOUR_TOPOLOGY_ID") -> dict:
+    """Get all nodes in a topology
+    To get ahold of your topology_id you can try to find it from the Kubernetes Cluster
+    kubectl logs -n <pf namespace: usually the naming convention is: pf-xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx> <toposerver-xxxxxxxxx-xxxxx> | grep topology_id
+    This topology_id usually the same of an organisation
+    """
+    try:
+        headers = auth(rd_server, email, password, api_token)
+        if not headers:
+            return {"error": "Authentication failed"}
+
+        url = f'https://{rd_server}/topology/api/v1/orgs/{org_id}/{topology_id}/nodes'
+        response = httpx.get(url, headers=headers, verify=False, timeout=30.0)
+
+        if response.status_code == 200:
+            result = response.json()
+            if isinstance(result, list):
+                return {"nodes": result, "total": len(result)}
+            return result
+        else:
+            return {
+                "success": False,
+                "status_code": response.status_code,
+                "error": response.text
+            }
+
+    except Exception as e:
+        print(f"An unexpected error occurred in get_topology_nodes: {e}", file=sys.stderr)
+        return {"error": str(e)}
+
+
+@mcp.tool()
+def create_te_lsp(
+    lsp_name: str,
+    from_address: str,
+    to_address: str,
+    provisioning_type: str,
+    bandwidth: str = "0",
+    setup_priority: int = 7,
+    holding_priority: int = 7,
+    path_type: str = "primary",
+    topology_id: str = "10"
+) -> dict:
+    """Create a PCE-initiated Traffic Engineering LSP."""
+    try:
+        headers = auth(rd_server, email, password, api_token)
+        if not headers:
+            return {"error": "Authentication failed"}
+
+        url = f'https://{rd_server}/topology/api/v1/orgs/{org_id}/{topology_id}/te-lsps'
+
+        # Convert bandwidth to integer (bps)
+        try:
+            bw_int = int(float(bandwidth) * 1_000_000)  # Convert Mbps to bps
+        except:
+            bw_int = 0
+
+        payload = {
+            "from": {
+                "address": from_address,
+                "topoObjectType": "ipv4"
+            },
+            "to": {
+                "address": to_address,
+                "topoObjectType": "ipv4"
+            },
+            "name": lsp_name,
+            "pathType": path_type,
+            "provisioningType": provisioning_type,
+            "plannedProperties": {
+                "adminStatus": "Up",
+                "bandwidth": bw_int,
+                "holdingPriority": holding_priority,
+                "setupPriority": setup_priority
+            }
+        }
+
+        response = httpx.post(url, json=payload, headers=headers, verify=False, timeout=60.0)
+
+        if response.status_code in [200, 201]:
+            return {
+                "success": True,
+                "status_code": response.status_code,
+                "data": response.json(),
+                "message": f"TE-LSP '{lsp_name}' created successfully with {provisioning_type} provisioning"
+            }
+        else:
+            return {
+                "success": False,
+                "status_code": response.status_code,
+                "error": response.text,
+                "message": f"Failed to create TE-LSP '{lsp_name}'"
+            }
+
+    except Exception as e:
+        print(f"An unexpected error occurred in create_te_lsp: {e}", file=sys.stderr)
+        return {"error": str(e)}
+
+
+@mcp.tool()
+def list_te_lsps(topology_id: str = "YOUR_TOPOLOGY_ID") -> dict:
+    """List all TE-LSPs in a topology"""
+    try:
+        headers = auth(rd_server, email, password, api_token)
+        if not headers:
+            return {"error": "Authentication failed"}
+
+        url = f'https://{rd_server}/topology/api/v1/orgs/{org_id}/{topology_id}/te-lsps'
+        response = httpx.get(url, headers=headers, verify=False, timeout=30.0)
+
+        if response.status_code == 200:
+            result = response.json()
+            if isinstance(result, list):
+                return {"te_lsps": result, "total": len(result)}
+            return result
+        else:
+            return {
+                "success": False,
+                "status_code": response.status_code,
+                "error": response.text
+            }
+
+    except Exception as e:
+        print(f"An unexpected error occurred in list_te_lsps: {e}", file=sys.stderr)
+        return {"error": str(e)}
+
+
+@mcp.tool()
+def get_te_lsp(
+    lsp_id: str,
+    topology_id: str = "YOUR_TOPOLOGY_ID"
+) -> dict:
+    """Get detailed information about a specific TE-LSP"""
+    try:
+        headers = auth(rd_server, email, password, api_token)
+        if not headers:
+            return {"error": "Authentication failed"}
+
+        url = f'https://{rd_server}/topology/api/v1/orgs/{org_id}/{topology_id}/te-lsps/{lsp_id}'
+        response = httpx.get(url, headers=headers, verify=False, timeout=30.0)
+
+        if response.status_code == 200:
+            return {"success": True, "data": response.json()}
+        else:
+            return {
+                "success": False,
+                "status_code": response.status_code,
+                "error": response.text
+            }
+
+    except Exception as e:
+        print(f"An unexpected error occurred in get_te_lsp: {e}", file=sys.stderr)
+        return {"error": str(e)}
+
+@mcp.tool()
+def delete_te_lsp(
+    lsp_id: str,
+    topology_id: str = "YOUR_TOPOLOGY_ID"
+) -> dict:
+    """Delete a TE-LSP"""
+    try:
+        headers = auth(rd_server, email, password, api_token)
+        if not headers:
+            return {"error": "Authentication failed"}
+
+        url = f'https://{rd_server}/topology/api/v1/orgs/{org_id}/{topology_id}/te-lsps/{lsp_id}'
+        response = httpx.delete(url, headers=headers, verify=False, timeout=30.0)
+
+        if response.status_code in [200, 204]:
+            return {
+                "success": True,
+                "message": f"TE-LSP '{lsp_id}' deleted successfully"
+            }
+        else:
+            return {
+                "success": False,
+                "status_code": response.status_code,
+                "error": response.text
+            }
+
+    except Exception as e:
+        print(f"An unexpected error occurred in delete_te_lsp: {e}", file=sys.stderr)
+        return {"error": str(e)}
+
+
+@mcp.tool()
+def get_te_lsp_history(
+    lsp_id: str,
+    topology_id: str = "YOUR_TOPOLOGY_ID"
+) -> dict:
+    """Get the history of changes for a TE-LSP"""
+    try:
+        headers = auth(rd_server, email, password, api_token)
+        if not headers:
+            return {"error": "Authentication failed"}
+
+        url = f'https://{rd_server}/topology/api/v1/orgs/{org_id}/{topology_id}/te-lsps/{lsp_id}/history'
+        response = httpx.get(url, headers=headers, verify=False, timeout=30.0)
+
+        if response.status_code == 200:
+            return {"success": True, "data": response.json()}
+        else:
+            return {
+                "success": False,
+                "status_code": response.status_code,
+                "error": response.text
+            }
+
+    except Exception as e:
+        print(f"An unexpected error occurred in get_te_lsp_history: {e}", file=sys.stderr)
         return {"error": str(e)}
