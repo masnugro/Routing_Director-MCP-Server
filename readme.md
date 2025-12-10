@@ -46,5 +46,5 @@ Available tools:
 
 # Disclaimer
 
-The available function tools (rd_mcp.py) is a living documentation, I will try to add the capabilities along the time.
+The available function tools (https://github.com/masnugro/Routing_Director-MCP-Server/blob/main/rd_mcp.py) (rd_mcp.py) is a living documentation, I will try to add the capabilities along the time.
 
