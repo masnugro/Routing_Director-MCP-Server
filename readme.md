@@ -14,7 +14,7 @@ I'm running this using Macbook in .venv
 - uv pip install fastmcp
 - fastmcp install claude-desktop rd_mcp2.py
 
-Available tools:
+**Available tools:**
 * ```get``` running active assurance
 * ```get``` customers
 * ```get``` bgp status
