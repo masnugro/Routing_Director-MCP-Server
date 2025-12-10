@@ -4,7 +4,7 @@ Imagine if you can interact with your Transport SDN automation (Routing Director
 This tools could just do that and the response will be user-friendly and easily readable. Not only you can get the information, but you can also create something directly to your Routing Director by asking the Agentic AI.
 
 
-```
+
 Step-by-step guide:
 better to run this in virtual environment.
 I'm running this using Macbook in .venv
@@ -15,25 +15,25 @@ I'm running this using Macbook in .venv
 4/fastmcp install claude-desktop rd_mcp2.py
 
 Available tools:
-1/ get running active assurance
-2/ get customers
-3/ get bgp status
-4/ get bgp peers number
-5/ get cluster health
-6/ acknowledge alarm
-7/ create new customer
-8/ get sites list
-9/ get device inventory
-10/ get organisation alarms
-11/ get alerts
-12/ get device series
-13/ get topology
-14/ get topology nodes
-15/ create TE LSP
-16/ get TE LSP in networks
-17/ delete TE LSP
-18/ get TE LSP history
-```
+1/ ```get``` running active assurance
+2/ ```get``` customers
+3/ ```get``` bgp status
+4/ ```get``` bgp peers number
+5/ ```get``` cluster health
+6/ ```acknowledge``` alarm
+7/ ```create``` new customer
+8/ ```get``` sites list
+9/ ```get``` device inventory
+10/ ```get``` organisation alarms
+11/ ```get``` alerts
+12/ ```get``` device series
+13/ ```get``` topology
+14/ ```get``` topology nodes
+15/ ```create``` TE LSP
+16/ ```get``` TE LSP in networks
+17/ ```delete``` TE LSP
+18/ ```get``` TE LSP history
+
 
 ## Sample Output
 
