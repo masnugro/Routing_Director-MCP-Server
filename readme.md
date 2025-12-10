@@ -15,7 +15,7 @@ I'm running this in .venv in Macbook
 4/fastmcp install claude-desktop rd_mcp2.py
 
 Available tools:
-1/ ```get``` running active assurance
+1/ get running active assurance
 2/ get customers
 3/ get bgp status
 4/ get bgp peers number
