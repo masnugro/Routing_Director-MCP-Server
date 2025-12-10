@@ -9,7 +9,7 @@ Step-by-step guide:
 better to run this in virtual environment.
 I'm running this using Macbook in .venv
 
-1/pip install -r requirements.txt
+1/pip install -r [requirements.txt](https://github.com/masnugro/Routing_Director-MCP-Server/blob/main/requirements.txt)
 2/pip install --upgrade pip
 3/uv pip install fastmcp
 4/fastmcp install claude-desktop rd_mcp2.py
