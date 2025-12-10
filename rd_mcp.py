@@ -2,6 +2,7 @@ from fastmcp import FastMCP
 import httpx
 import sys
 from typing import Optional, Dict, List, Union
+from datetime import datetime
 
 # Create an MCP server
 mcp = FastMCP("Routing Director MCP server")
