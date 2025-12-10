@@ -27,6 +27,12 @@ Available tools:
 10/ get organisation alarms
 11/ get alerts
 12/ get device series
+13/ get topology
+14/ get topology nodes
+15/ create TE LSP
+16/ get TE LSP in networks
+17/ delete TE LSP
+18/ get TE LSP history
 ```
 
 ## Sample Output
