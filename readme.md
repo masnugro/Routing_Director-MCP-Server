@@ -41,6 +41,9 @@ Available tools:
 
 <img width="843" height="914" alt="image" src="https://github.com/user-attachments/assets/d3dc144c-24bd-4ea8-bb2d-9cbac3821c32" />
 
+<img width="755" height="729" alt="image" src="https://github.com/user-attachments/assets/e75ab571-bcc1-4563-9ff2-a7eda23341fe" />
+
+
 # Disclaimer
 ```
 The available function tools (rd_mcp.py) is a living documentation, I will try to add the capabilities along the time.
