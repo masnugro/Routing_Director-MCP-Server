@@ -3,6 +3,8 @@
 Imagine if you can interact with your Transport SDN automation (Routing Director) with natural language, wouldn't it be cool?
 This tools could just do that and the response will be user-friendly and easily readable. Not only you can get the information, but you can also create something directly to your Routing Director by asking the Agentic AI.
 
+Sample RD Topology
+<img width="451" height="135" alt="image" src="https://github.com/user-attachments/assets/c4effbfb-303d-4515-8ec7-996ed41ab07f" />
 
 
 ## Step-by-step guide:
