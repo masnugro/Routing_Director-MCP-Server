@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "Routing Director MCP server": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "fastmcp",
+        "fastmcp",
+        "run",
+        "'[put your json MCPServers path here]'"
+      ]
+    }
+  }
+}
