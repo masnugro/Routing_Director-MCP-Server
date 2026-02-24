@@ -13,6 +13,8 @@ Sample RD Topology
 Better to run this in virtual environment.
 I'm running this using Macbook in .venv
 
+- python3 -m venv .venv
+- source .venv/bin/activate
 - pip install -r [requirements.txt](https://github.com/masnugro/Routing_Director-MCP-Server/blob/main/requirements.txt)
 - pip install --upgrade pip
 - uv pip install fastmcp
