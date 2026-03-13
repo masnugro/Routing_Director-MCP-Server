@@ -18,7 +18,7 @@ I'm running this using Macbook in .venv
 - pip install -r [requirements.txt](https://github.com/masnugro/Routing_Director-MCP-Server/blob/main/requirements.txt)
 - pip install --upgrade pip
 - uv pip install fastmcp
-- fastmcp install claude-desktop rd_mcp2.py
+- fastmcp install claude-desktop rd_mcp.py
 - add the [Claude desktop](https://github.com/masnugro/Routing_Director-MCP-Server/blob/main/RD_Claude_desktop_config.json) in your installation path directory
 
 **Available Tools:**
