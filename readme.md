@@ -54,6 +54,8 @@ I'm running this using Macbook in .venv
 
 <img width="755" height="729" alt="image" src="https://github.com/user-attachments/assets/e75ab571-bcc1-4563-9ff2-a7eda23341fe" />
 
+<img width="788" height="727" alt="image" src="https://github.com/user-attachments/assets/ff84fea0-a096-4673-b262-1010cc8322b6" />
+
 
 # Disclaimer
 
