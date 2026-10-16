@@ -40,6 +40,10 @@ I'm running this using Macbook in .venv
 * ```get``` TE LSP in networks
 * ```delete``` TE LSP
 * ```get``` TE LSP history
+* ```create``` Service Order
+* ```execute``` Service Order
+* ```get``` Service Order
+* ```list``` Service Order
 
 
 ## Sample Output
